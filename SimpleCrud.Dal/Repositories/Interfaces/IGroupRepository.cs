@@ -5,5 +5,4 @@ namespace SimpleCrud.Dal.Repositories.Interfaces;
 
 public interface IGroupRepository : IBaseRepo<Group>
 {
-    
 }

@@ -16,8 +16,4 @@
     <ProjectReference Include="..\SimpleCrud.Model\SimpleCrud.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
