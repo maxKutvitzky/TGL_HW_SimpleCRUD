@@ -1,0 +1,50 @@
+﻿@using SimpleCrud.Model.Enums
+@model Student
+
+<div class="d-flex flex-row" id="nameContainer">
+    <div class="form-group m-2">
+        <label asp-for="FirstName" class="col-form-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group m-2">
+        <label asp-for="LastName" class="col-form-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="d-flex flex-row " id="credContainer">
+    <div class="form-group m-2">
+        <label asp-for="PhoneNumber" class="col-form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group m-2">
+        <label asp-for="Email" class="col-form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+</div>
+<div class="d-flex flex-row" id="selectContainer">
+    <div class="form-group m-2">
+        <label asp-for="Gender" class="col-form-label"></label>
+        <select asp-for="Gender" class="form-control" asp-items="Html.GetEnumSelectList<GenderEnum>()">
+        </select>
+        <span asp-validation-for="Gender" class="text-danger"></span>
+    </div>
+
+    <div class="form-group m-2">
+        <label asp-for="PaymentPlan" class="col-form-label"></label>
+        <select asp-for="PaymentPlan" class="form-control" asp-items="Html.GetEnumSelectList<PaymentPlanEnum>()"></select>
+        <span asp-validation-for="PaymentPlan" class="text-danger"></span>
+    </div>
+    <div class="form-group m-2">
+        <label asp-for="Group.Name" class="col-form-label"></label>
+        <select asp-for="Group.Id" class="form-control" asp-items="ViewBag.Groups"></select>
+        <input asp-for="Group.Name" class="form-control" hidden/>
+        <input asp-for="Group.Students" class="form-control" hidden/>
+    </div>
+</div>
+
+

@@ -1,0 +1,13 @@
+﻿@model Student
+<div class="d-flex flex-column justify-content-center align-items-center" id="editFormContainer">
+    <h1>Edit @Model.FirstName @Model.LastName</h1>
+    <form asp-action="Edit">
+        <div class="d-flex justify-content-center flex-column align-items-center" id="editorContainer">
+            @Html.EditorForModel()
+        </div>
+        <div class="form-group m-2 d-flex justify-content-center align-self-center">
+            <button type="submit" class="btn btn-success" style="margin-right: 5px"> Save </button>
+            @Html.ActionLink("Cancel", "Index", "Students", null, new { @class = "btn btn-primary" })
+        </div>
+    </form>
+</div>

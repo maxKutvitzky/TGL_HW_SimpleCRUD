@@ -6,4 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleCrud.Dal\SimpleCrud.Dal.csproj" />
+    <ProjectReference Include="..\SimpleCrud.Model\SimpleCrud.Model.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -12,7 +12,20 @@ html {
   position: relative;
   min-height: 100%;
 }
-
-body {
-  margin-bottom: 60px;
+#tableContainer {
+    overflow: auto;
+    height: 70vh;
+}
+#tableContainer thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: black;
+    color: white;
+}
+#indexButtonContainer {
+    margin: 5px 5px 5px 0;
+}
+.deleteDisplayName {
+    margin-right: 150px
 }
