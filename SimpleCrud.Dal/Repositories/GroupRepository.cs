@@ -6,11 +6,17 @@ using SimpleCrud.Model;
 
 namespace SimpleCrud.Dal.Repositories
 {
-    internal class GroupRepository : BaseRepo<Group>, IGroupRepository
+    public class GroupRepository : BaseRepo<Group>, IGroupRepository
     {
         public GroupRepository(SimpleDbContext dnContext) : base(dnContext)
         {
         }
+
+        public override Group GetById(int? id) =>
+            dbSet
+                .Where(g => g.Id == id)
+                .Include(g => g.Students)
+                .FirstOrDefault();
 
         public override IEnumerable<Group> GetAll() =>
             dbSet

@@ -15,7 +15,7 @@ namespace SimpleCrud.Dal.Initialization
                 new Group{Name = "Group3"},
                 new Group{Name = "Group4"}
             };
-        public static List<Student> GenerateStudents(int count)
+        public static List<Student> GenerateStudents(int count, List<Group> groups)
         {
             var students = new Faker<Student>()
                 .RuleFor(s => s.Gender, f => f.PickRandom<GenderEnum>())
@@ -23,8 +23,8 @@ namespace SimpleCrud.Dal.Initialization
                 .RuleFor(s => s.LastName, (f,s) => f.Name.LastName(GetGender(s.Gender)))
                 .RuleFor(s => s.Email, (f, s) => f.Internet.Email(s.FirstName, s.LastName))
                 .RuleFor(s => s.PhoneNumber, f => f.Phone.PhoneNumber())
-                .RuleFor(s => s.PaymentPlan, f => f.PickRandom<PaymentPlan>())
-                .RuleFor(s => s.Group, f => f.PickRandom(Groups));
+                .RuleFor(s => s.PaymentPlan, f => f.PickRandom<PaymentPlanEnum>())
+                .RuleFor(s => s.Group, f => f.PickRandom(groups));
 
             return students.Generate(count);
         }

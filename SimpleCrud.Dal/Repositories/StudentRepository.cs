@@ -6,27 +6,38 @@ using SimpleCrud.Model;
 
 namespace SimpleCrud.Dal.Repositories
 {
-    internal class StudentRepository: BaseRepo<Student>, IStudentRepository
+    public class StudentRepository: BaseRepo<Student>, IStudentRepository
     {
-        public StudentRepository(SimpleDbContext dnContext) : base(dnContext)
+        public StudentRepository(SimpleDbContext dbContext) : base(dbContext)
         {
         }
+
+        public override Student GetById(int? id) =>
+            dbSet
+                .Where(s=> s.Id == id)
+                .Include(s=> s.Group)
+                .FirstOrDefault();
 
         public override IEnumerable<Student> GetAll() =>
             dbSet
                 .Include(s => s.Group)
-                .OrderBy(s => s.LastName);
-
-        public IEnumerable<Student> GetAllByGroupName(string name) =>
-            dbSet
-                .Where(s => s.Group.Name == name)
-                .Include(s => s.Group)
-                .OrderBy(s => s.LastName);
-
-        public IEnumerable<Student> GetAllByGroupId(int id) =>
-            dbSet
-                .Where(s => s.Group.Id == id)
-                .Include(s => s.Group)
-                .OrderBy(s => s.LastName);
+                .OrderBy(s => s.Group.Name);
+        public override int Update(Student entity)
+        {
+            Student student = dbSet.Find(entity.Id);
+            if (student == null)
+            {
+                return 0;
+            }
+            student.FirstName = entity.FirstName;
+            student.LastName = entity.LastName;
+            student.Group = entity.Group;
+            student.Email = entity.Email;
+            student.PhoneNumber = entity.PhoneNumber;
+            student.Gender = entity.Gender;
+            student.PaymentPlan = entity.PaymentPlan;
+            dbSet.Update(student);
+            return dbContext.SaveChanges();
+        }
     }
 }

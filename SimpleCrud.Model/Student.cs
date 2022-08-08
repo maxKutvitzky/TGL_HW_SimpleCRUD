@@ -25,9 +25,10 @@ namespace SimpleCrud.Model
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        public Group? Group { get; set; }
+        [DisplayName("Group")]
+        public Group Group { get; set; }
         [Required]
-        public PaymentPlan PaymentPlan { get; set; }
+        public PaymentPlanEnum PaymentPlan { get; set; }
 
     }
 }

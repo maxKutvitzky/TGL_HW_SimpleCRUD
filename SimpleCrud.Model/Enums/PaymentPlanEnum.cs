@@ -1,6 +1,6 @@
 ﻿namespace SimpleCrud.Model.Enums;
 
-public enum PaymentPlan
+public enum PaymentPlanEnum
 {
     Contract,
     Budget

@@ -1,0 +1,8 @@
+﻿@model Student
+<div>
+    @Html.DisplayForModel()
+    <form asp-action="Delete">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    @Html.ActionLink("Cancel", "Index", "Students",null, new { @class="btn btn-outline-success" })
+</div>

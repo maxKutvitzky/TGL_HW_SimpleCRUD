@@ -19,7 +19,7 @@ namespace SimpleCrud.Dal.DbContextData
             {
                 entity.HasMany(g => g.Students)
                     .WithOne(s => s.Group)
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             });
         }
     }

@@ -24,7 +24,7 @@ namespace SimpleCrud.Dal.Repositories.Base
             return dbContext.SaveChanges();
         }
 
-        public int Update(T entity)
+        public virtual int Update(T entity)
         {
             dbSet.Update(entity);
             return dbContext.SaveChanges();
@@ -36,7 +36,7 @@ namespace SimpleCrud.Dal.Repositories.Base
             return dbContext.SaveChanges();
         }
 
-        public T GetById(int id) => dbSet.Find(id);
+        public abstract T GetById(int? id);
 
         public abstract IEnumerable<T> GetAll();
     }

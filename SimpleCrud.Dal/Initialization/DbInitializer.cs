@@ -19,14 +19,18 @@ namespace SimpleCrud.Dal.Initialization
         private static void SeedData(SimpleDbContext context, int studentsCount)
         {
             context.Groups?.AddRange(InitData.Groups);
-            context.Students?.AddRange(InitData.GenerateStudents(studentsCount));
+            context.SaveChanges();
+            context.Students?.AddRange(InitData.GenerateStudents(studentsCount, context.Groups.ToList()));
             context.SaveChanges();
         }
 
         public static void InitializeDataBase(SimpleDbContext context, int studentsCount)
         {
             context.Database.Migrate();
-            SeedData(context,studentsCount);
+            if (!context.Students.Any() && !context.Groups.Any())
+            {
+                SeedData(context, studentsCount);
+            }
         }
         public static void InitializeDataBaseWithRecreation(SimpleDbContext context, int studentsCount)
         {
