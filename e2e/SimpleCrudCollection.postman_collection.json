@@ -1,0 +1,326 @@
+{
+	"info": {
+		"_postman_id": "a47b3d89-99c5-4346-b2cd-3a0ec0fe3756",
+		"name": "SimpleCrudCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22716717"
+	},
+	"item": [
+		{
+			"name": "GetIndexPage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{defaultUrl}}/",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEditPage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Edit/{{defaultUserId}}",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Edit",
+						"{{defaultUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDeletePage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Delete/{{defaultUserId}}",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Delete",
+						"{{defaultUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetCreatePage",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Create",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EditUserByFormData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Edit is successful\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"TestFirstName\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "FirstName",
+							"value": "TestFirstName",
+							"type": "text"
+						},
+						{
+							"key": "LastName",
+							"value": "TestLastName",
+							"type": "text"
+						},
+						{
+							"key": "Gender",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "1-479-931-1418",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "Test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Group.Id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Group.Name",
+							"value": "Group1",
+							"type": "text"
+						},
+						{
+							"key": "Group.Students",
+							"value": "System.Collections.Generic.List`1[SimpleCrud.Model.Student]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Edit/{{defaultUserId}}",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Edit",
+						"{{defaultUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUserById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Delete/{{defaultUserId}}",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Delete",
+						"{{defaultUserId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Create is successful\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"CreateTestFirstName\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "FirstName",
+							"value": "CreateTestFirstName",
+							"type": "text"
+						},
+						{
+							"key": "LastName",
+							"value": "TestLastName",
+							"type": "text"
+						},
+						{
+							"key": "Gender",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "PhoneNumber",
+							"value": "1-479-931-1418",
+							"type": "text"
+						},
+						{
+							"key": "Email",
+							"value": "Test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "Group.Id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "Group.Name",
+							"value": "Group1",
+							"type": "text"
+						},
+						{
+							"key": "Group.Students",
+							"value": "System.Collections.Generic.List`1[SimpleCrud.Model.Student]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{defaultUrl}}/Students/Create",
+					"host": [
+						"{{defaultUrl}}"
+					],
+					"path": [
+						"Students",
+						"Create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
