@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
+﻿using SimpleCrud.Model.Base;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using SimpleCrud.Model.Base;
 
 namespace SimpleCrud.Model;
 

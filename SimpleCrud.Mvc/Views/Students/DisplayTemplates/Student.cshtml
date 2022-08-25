@@ -42,4 +42,31 @@
     <dd class="col-sm-10">
         @Html.DisplayFor(model => model.Group.Name)
     </dd>
+    <dt class="col-sm-2">
+        <a>Subjects:</a>
+    </dt>
+    <dd class="col-sm-10">
+        @foreach (Subject item in Model.Subjects)
+        {
+            <a>@item.Name</a>
+        }
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Passport.Number)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Passport.Number)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Passport.DateOfBirth)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Passport.DateOfBirth)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Passport.Address)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Passport.Address)
+    </dd>
 </dl>

@@ -14,7 +14,6 @@ public class StudentsController : Controller
     {
         _studentRepository = repository;
     }
-
     internal SelectList GetGroupsSelectList(IGroupRepository repository)
     {
         return new SelectList(repository.GetAll(), nameof(Group.Id), nameof(Group.Name));
@@ -66,12 +65,15 @@ public class StudentsController : Controller
         if (id != student.Id) return BadRequest();
 
         student.Group = repository.GetById(student.Group.Id);
+        //A viewmodel should be used, but adding it now is time consuming 
+        ModelState.Remove("Passport.StudentId");
+        ModelState.Remove("Passport.Student");
+
         if (ModelState.IsValid)
         {
             _studentRepository.Update(student);
             return RedirectToAction(nameof(Index));
         }
-
         ViewBag.Groups = GetGroupsSelectList(repository);
         return View(student);
     }
@@ -84,16 +86,31 @@ public class StudentsController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create([FromServices] IGroupRepository repository, Student student)
+    public IActionResult Create([FromServices] IGroupRepository repository,
+        [FromServices] ISubjectRepository subjectRepository,
+        Student student)
     {
+        //A viewmodel should be used, but adding it now is time consuming
+        ModelState.Remove("Passport.StudentId");
+        ModelState.Remove("Passport.Student");
+
         if (ModelState.IsValid)
         {
             student.Group = repository.GetById(student.Group.Id);
+            student.Subjects = subjectRepository.GetAll().ToList().GetRange(0, 3);
             _studentRepository.Add(student);
             return RedirectToAction(nameof(Index));
         }
 
         ViewBag.Groups = GetGroupsSelectList(repository);
+        return View(student);
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult Info(int id)
+    {
+        Student student = _studentRepository.GetById(id);
+        if (student == null) return NotFound();
         return View(student);
     }
 }
