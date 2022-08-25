@@ -12,11 +12,13 @@ public class StudentRepository : BaseRepo<Student>, IStudentRepository
     {
     }
 
-    public override Student GetById(int? id)
+    public override Student? GetById(int? id)
     {
         return dbSet
             .Where(s => s.Id == id)
             .Include(s => s.Group)
+            .Include(s => s.Subjects)
+            .Include(s => s.Passport)
             .FirstOrDefault();
     }
 

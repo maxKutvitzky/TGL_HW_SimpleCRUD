@@ -56,8 +56,9 @@
                     @Html.DisplayFor(modelItem => item.PaymentPlan)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", "Students", new { id = @item.Id }, new { @class="btn btn-info" })
-                    @Html.ActionLink("Delete", "Delete", "Students", new { id = @item.Id }, new { @class="btn btn-danger" })
+                    @Html.ActionLink("Info", "Info", "Students", new { id = @item.Id }, new { @class="btn btn-info" })
+                    @Html.ActionLink("Edit", "Edit", "Students", new { id = @item.Id }, new { @class = "btn btn-info" })
+                    @Html.ActionLink("Delete", "Delete", "Students", new { id = @item.Id }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
         }

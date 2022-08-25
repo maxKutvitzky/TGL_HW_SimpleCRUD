@@ -9,8 +9,14 @@ public class SimpleDbContext : DbContext
     {
     }
 
+    #region DbSets
+
     public DbSet<Student>? Students { get; set; }
     public DbSet<Group>? Groups { get; set; }
+    public DbSet<Subject>? Subjects { get; set; }
+    public DbSet<Passport>? Passports { get; set; }
+
+    #endregion
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

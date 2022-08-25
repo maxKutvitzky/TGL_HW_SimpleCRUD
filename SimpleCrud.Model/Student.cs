@@ -1,7 +1,7 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using SimpleCrud.Model.Base;
+﻿using SimpleCrud.Model.Base;
 using SimpleCrud.Model.Enums;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace SimpleCrud.Model;
 
@@ -24,9 +24,11 @@ public class Student : BaseEntity
     [Phone]
     public string PhoneNumber { get; set; }
 
-    [Required] [EmailAddress] public string Email { get; set; }
+    [Required][EmailAddress] public string Email { get; set; }
 
-    [Required] [DisplayName("Group")] public Group Group { get; set; }
+    [Required][DisplayName("Group")] public Group Group { get; set; }
 
     [Required] public PaymentPlanEnum PaymentPlan { get; set; }
+    public IEnumerable<Subject> Subjects { get; set; }
+    public Passport Passport { get; set; }
 }
